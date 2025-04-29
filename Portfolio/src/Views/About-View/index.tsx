@@ -1,5 +1,6 @@
 import { Header } from '../../components/Header/HeaderComponent';
 import { Footer } from '../../components/Footer/FooterComponent';
+import { Chip } from '@mui/material';
 
 export const AboutView = () => {
   return (
@@ -31,13 +32,35 @@ export const AboutView = () => {
         <div className='flex-row mb-4'>
           <h1 className='text-4xl font-bold mb-4 text-black'>Tech Stack</h1>
         </div>
-        <div className='flex-row mb-4'>
-          <p className='text-md text-gray-700 max-w-xl'>
-            Javascript/HTML/CSS React Vue.js Typescript Git Tailwind Vite MobX
-            Tanstack Router AI Programming VS Code Quasar Jira Azure Dev Ops
-            Miro ElasticSearch Functional Programming MVC Object Oriented
-            Programming Microsoft Office Slack
-          </p>
+        <div className='flex-row justify-center mb-4'>
+          <Chip
+            label='Javascript/HTML/CSS'
+            variant='outlined'
+            className='m-2'
+          />
+          <Chip label='React' variant='outlined' className='m-2' />
+          <Chip label='Vue.js' variant='outlined' className='m-2' />
+          <br />
+          <Chip label='Typescript' variant='outlined' className='m-2' />
+          <Chip label='Tailwind' variant='outlined' className='m-2' />
+          <Chip label='AI Programming' variant='outlined' className='m-2' />
+          <br />
+          <Chip label='Git' variant='outlined' className='m-2' />
+          <Chip label='Vite' variant='outlined' className='m-2' />
+          <Chip label='RESTful API' variant='outlined' className='m-2' />
+          <br />
+          <Chip label='Quasar' variant='outlined' className='m-2' />
+          <Chip label='Azure Dev Ops' variant='outlined' className='m-2' />
+          <Chip label='Jira' variant='outlined' className='m-2' />
+          <br />
+          <Chip label='OOP' variant='outlined' className='m-2' />
+          <Chip
+            label='Functional Programming'
+            variant='outlined'
+            className='m-2'
+          />
+          <Chip label='Slack' variant='outlined' className='m-2' />
+          <Chip label='Microsoft Suite' variant='outlined' className='m-2' />
         </div>
       </div>
 
