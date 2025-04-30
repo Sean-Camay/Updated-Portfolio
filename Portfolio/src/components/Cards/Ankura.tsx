@@ -5,7 +5,8 @@ import {
   CardContent,
   CardMedia,
   Typography,
-} from '@mui/material';
+} from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export const Ankura = () => {
   return (
@@ -42,8 +43,22 @@ export const Ankura = () => {
           >
             Ankura AI
           </Button>
+          <Link to='/ankura-work'>
+            <Button
+              size='small'
+              sx={{
+                color: 'black',
+                '&:hover': {
+                  backgroundColor: 'black',
+                  color: 'white',
+                },
+              }}
+            >
+              Ankura AI
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </>
-  );
-};
+  )
+}
