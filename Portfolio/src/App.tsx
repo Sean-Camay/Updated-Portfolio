@@ -4,6 +4,7 @@ import { AboutView } from './Views/About-View'
 import { WorkView } from './Views/Work-View'
 import { ContactView } from './Views/Contact-View'
 import { AnkuraWork } from './Views/Ankura-Work'
+import { AilevateWork } from './Views/Ailevate-Work'
 import './App.css'
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/work' element={<WorkView />} />
         <Route path='/contact' element={<ContactView />} />
         <Route path='/ankura-work' element={<AnkuraWork />} />
+        <Route path='/ailevate-work' element={<AilevateWork />} />
       </Routes>
     </>
   )

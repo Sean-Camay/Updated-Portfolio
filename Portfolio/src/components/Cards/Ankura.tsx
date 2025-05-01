@@ -11,38 +11,18 @@ import { Link } from 'react-router-dom'
 export const Ankura = () => {
   return (
     <>
-      <Card sx={{ maxWidth: 350 }}>
+      <Card sx={{ maxWidth: 520 }}>
         <CardMedia
-          sx={{ height: 140 }}
+          sx={{ height: 140, width: 350 }}
           image='../../../public/ankura-ai.png'
           title='ankura'
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
-            Ankura
-          </Typography>
-          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
-            Front End development for Ankura AI suite of products including
-            Ankura Otter Analytics, Ankura GPT, Ankura Notes, Ankura Extractor.
-            Tech stack: React, Vue, Typescript, and Tailwind CSS.
+            Ankura AI
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            size='small'
-            onClick={() =>
-              window.open('https://ankura.com/solutions/ankura-ai', '_blank')
-            }
-            sx={{
-              color: 'black',
-              '&:hover': {
-                backgroundColor: 'black',
-                color: 'white',
-              },
-            }}
-          >
-            Ankura AI
-          </Button>
           <Link to='/ankura-work'>
             <Button
               size='small'
@@ -54,7 +34,7 @@ export const Ankura = () => {
                 },
               }}
             >
-              Ankura AI
+              Learn More
             </Button>
           </Link>
         </CardActions>
