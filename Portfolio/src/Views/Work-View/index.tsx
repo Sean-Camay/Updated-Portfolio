@@ -28,7 +28,7 @@ export const WorkView = () => {
           <div className='p-4'>
             <MiniPop />
           </div>
-          <div>
+          <div className='p-4'>
             <GehaCard />
           </div>
         </div>

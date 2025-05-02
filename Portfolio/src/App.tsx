@@ -5,6 +5,8 @@ import { WorkView } from './Views/Work-View'
 import { ContactView } from './Views/Contact-View'
 import { AnkuraWork } from './Views/Ankura-Work'
 import { AilevateWork } from './Views/Ailevate-Work'
+import { MiniPopWork } from './Views/Mini-Pop-Work'
+import { GEHAWork } from './Views/GEHA-Work'
 import './App.css'
 
 const App = () => {
@@ -17,6 +19,8 @@ const App = () => {
         <Route path='/contact' element={<ContactView />} />
         <Route path='/ankura-work' element={<AnkuraWork />} />
         <Route path='/ailevate-work' element={<AilevateWork />} />
+        <Route path='/mini-pop-work' element={<MiniPopWork />} />
+        <Route path='/geha-work' element={<GEHAWork />} />
       </Routes>
     </>
   )

@@ -5,14 +5,15 @@ import {
   CardContent,
   CardMedia,
   Typography,
-} from '@mui/material';
+} from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export const GehaCard = () => {
   return (
     <>
-      <Card sx={{ maxWidth: 350 }}>
+      <Card sx={{ maxWidth: 520 }}>
         <CardMedia
-          sx={{ height: 280 }}
+          sx={{ height: 280, width: 350 }}
           image='../../../public/geha-image.png'
           title='mini pop'
         />
@@ -20,27 +21,24 @@ export const GehaCard = () => {
           <Typography gutterBottom variant='h5' component='div'>
             GEHA Solutions
           </Typography>
-          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
-            A government employee healthcare company. Designed using SASS, CSS,
-            and SXA through Sitecore.
-          </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            size='small'
-            onClick={() => window.open('https://gehasolutions.com/', '_blank')}
-            sx={{
-              color: 'black',
-              '&:hover': {
-                backgroundColor: 'black',
-                color: 'white',
-              },
-            }}
-          >
-            GEHA Solutions
-          </Button>
+          <Link to='/geha-work'>
+            <Button
+              size='small'
+              sx={{
+                color: 'black',
+                '&:hover': {
+                  backgroundColor: 'black',
+                  color: 'white',
+                },
+              }}
+            >
+              Learn More
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </>
-  );
-};
+  )
+}
