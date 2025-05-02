@@ -1,10 +1,10 @@
-import { Header } from '../../components/Header/HeaderComponent';
-import { Footer } from '../../components/Footer/FooterComponent';
-import { Chip } from '@mui/material';
+import { Header } from '../../components/Header/HeaderComponent'
+import { Footer } from '../../components/Footer/FooterComponent'
+import { Chip } from '@mui/material'
 
 export const AboutView = () => {
   return (
-    <div className='bg-gray-100 w-screen h-screen'>
+    <div className='bg-white w-screen h-screen'>
       <Header />
 
       <div className='flex flex-col items-center justify-center bg-white'>
@@ -66,5 +66,5 @@ export const AboutView = () => {
 
       <Footer />
     </div>
-  );
-};
+  )
+}

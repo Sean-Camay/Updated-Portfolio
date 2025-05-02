@@ -5,58 +5,39 @@ import { Header } from '../../components/Header/HeaderComponent'
 
 export const AilevateWork = () => {
   return (
-    <div className='bg-gray-100 w-screen h-screen'>
+    <div className='bg-white w-screen h-screen'>
       <Header />
 
       <div className='flex flex-row bg-white'>
-        <div className='flex flex-col flex-auto items-center justify-center bg-white p-4'>
+        <div className='flex flex-col ml-4 bg-white w-1/2'>
           <div className='flex flex-row mb-4'>
-            <h1 className='text-4xl font-bold mb-4 text-black'>Background</h1>
+            <h2 className='text-4xl font-bold mb-2 text-black'>Background</h2>
           </div>
 
           <div className='flex flex-row w-lg pb-4'>
             <Typography variant='body1' sx={{ color: 'text.secondary' }}>
               <span className='font-bold text-xl'>Ailevate AI </span>
-              is an AI-Powered Web Application to Reduce Denied Insurance Claims
-              in Healthcare Designed and developed an AI-driven web application
-              aimed at helping hospitals and healthcare providers significantly
-              reduce the volume of denied insurance claims. The platform
-              leverages machine learning and natural language processing to
-              analyze patient records, billing data, and insurance guidelines in
-              real time—identifying potential errors, missing information, or
-              non-compliant codes before submission. By proactively flagging
-              issues and offering corrective suggestions, the system streamlines
-              the claims process, improves reimbursement rates, and reduces
-              administrative burden—ultimately supporting better financial
-              health for hospitals and more consistent care delivery for
-              patients.
+              is an AI-powered web app for hospitals that analyzes records and
+              insurance rules in real time, flags errors, and suggests fixes to
+              streamline claims, boost reimbursements, and cut administrative
+              burden.
             </Typography>
           </div>
 
           <div className='flex flex-row my-4'>
-            <h1 className='text-4xl font-bold mb-4 text-black'>
-              Responsibility
-            </h1>
+            <h2 className='text-4xl font-bold mb-2 text-black'>Role</h2>
           </div>
           <div className='flex flex-row w-lg'>
             <Typography variant='body1' sx={{ color: 'text.secondary' }}>
-              Front-End Development for Ailevate AI (An Ankura Company) Led
-              front-end development for Ailevate AI, a specialized web
-              application platform designed to help hospitals reduce the volume
-              of denied insurance claims. The platform uses AI and data-driven
-              insights to identify potential errors and inconsistencies in
-              real-time—enabling healthcare providers to correct issues before
-              claims are submitted. This results in improved approval rates,
-              reduced revenue loss, and streamlined administrative workflows.
-              Built intuitive, responsive, and accessible user interfaces using
-              React, TypeScript, and Tailwind CSS. Collaborated closely with
-              designers, back-end engineers, and healthcare domain experts to
-              translate complex data and compliance requirements into
-              user-friendly features that empower clinical and billing teams.
+              Led front-end development for Ailevate AI—an Ankura platform that
+              uses AI-driven insights to spot and fix claim errors in real time.
+              Built responsive, accessible UIs with React, TypeScript, and
+              Tailwind CSS, partnering with designers, engineers, and healthcare
+              experts to boost approval rates and streamline workflows.
             </Typography>
           </div>
 
-          <div className='flex flex-row'>
+          <div className='flex flex-row justify-center mt-4'>
             <Button
               size='small'
               onClick={() => window.open('https://www.ailevate.com/', '_blank')}
@@ -68,12 +49,12 @@ export const AilevateWork = () => {
                 },
               }}
             >
-              Ailevate AI
+              Go to Ailevate's Website
             </Button>
           </div>
         </div>
 
-        <div className='flex flex-col flex-auto items-center bg-white mt-4'>
+        <div className='flex flex-col flex-auto items-center bg-white mt-4 w-1/2'>
           <Container fixed>
             <img src='../../../public/ailevate-ai.png' alt='ailevate logo' />
           </Container>

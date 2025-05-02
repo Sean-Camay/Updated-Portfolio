@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export const NavigationComponent = () => {
   return (
@@ -8,8 +8,8 @@ export const NavigationComponent = () => {
         <Button
           variant='text'
           sx={{
-            backgroundColor: 'black',
-            color: 'white',
+            backgroundColor: 'white',
+            color: 'black',
             borderRadius: '50px',
             padding: '10px 20px',
             '&:hover': {
@@ -25,8 +25,8 @@ export const NavigationComponent = () => {
         <Button
           variant='text'
           sx={{
-            backgroundColor: 'black',
-            color: 'white',
+            backgroundColor: 'white',
+            color: 'black',
             borderRadius: '50px',
             padding: '10px 20px',
             '&:hover': {
@@ -42,8 +42,8 @@ export const NavigationComponent = () => {
         <Button
           variant='text'
           sx={{
-            backgroundColor: 'black',
-            color: 'white',
+            backgroundColor: 'white',
+            color: 'black',
             borderRadius: '50px',
             padding: '10px 20px',
             '&:hover': {
@@ -59,8 +59,8 @@ export const NavigationComponent = () => {
         <Button
           variant='text'
           sx={{
-            backgroundColor: 'black',
-            color: 'white',
+            backgroundColor: 'white',
+            color: 'black',
             borderRadius: '50px',
             padding: '10px 20px',
             '&:hover': {
@@ -73,5 +73,5 @@ export const NavigationComponent = () => {
         </Button>
       </Link>
     </div>
-  );
-};
+  )
+}

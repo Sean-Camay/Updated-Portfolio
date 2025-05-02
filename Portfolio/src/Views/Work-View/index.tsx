@@ -1,13 +1,13 @@
-import { Footer } from '../../components/Footer/FooterComponent';
-import { Header } from '../../components/Header/HeaderComponent';
-import { MiniPop } from '../../components/Cards/MiniPop';
-import { GehaCard } from '../../components/Cards/GehaCard';
-import { Ankura } from '../../components/Cards/Ankura';
-import { Ailevate } from '../../components/Cards/Ailevate';
+import { Footer } from '../../components/Footer/FooterComponent'
+import { Header } from '../../components/Header/HeaderComponent'
+import { MiniPop } from '../../components/Cards/MiniPop'
+import { GehaCard } from '../../components/Cards/GehaCard'
+import { Ankura } from '../../components/Cards/Ankura'
+import { Ailevate } from '../../components/Cards/Ailevate'
 
 export const WorkView = () => {
   return (
-    <div className='bg-gray-100 w-screen h-screen'>
+    <div className='bg-white w-screen h-screen'>
       <Header />
 
       <div className='flex flex-col items-center justify-center bg-white'>
@@ -36,5 +36,5 @@ export const WorkView = () => {
 
       <Footer />
     </div>
-  );
-};
+  )
+}
