@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 export const Ailevate = () => {
   return (
     <>
-      <Card sx={{ maxWidth: 5200 }}>
+      <Card sx={{ maxWidth: 5200, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 140, width: 350 }}
           image='../../../public/ailevate-ai.png'

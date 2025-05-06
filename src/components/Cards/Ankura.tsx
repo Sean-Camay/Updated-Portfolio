@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 export const Ankura = () => {
   return (
     <>
-      <Card sx={{ maxWidth: 520 }}>
+      <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 140, width: 350 }}
           image='../../../public/ankura-ai.png'

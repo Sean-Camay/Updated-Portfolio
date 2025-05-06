@@ -5,11 +5,11 @@ import { Header } from '../../components/Header/HeaderComponent'
 
 export const AilevateWork = () => {
   return (
-    <div className='bg-white w-screen h-screen'>
+    <div className='bg-[#FFFCF9] w-screen h-screen'>
       <Header />
 
-      <div className='flex flex-row bg-white'>
-        <div className='flex flex-col ml-4 bg-white w-1/2'>
+      <div className='flex flex-row bg-[#FFFCF9]'>
+        <div className='flex flex-col ml-4 bg-[#FFFCF9] w-1/2'>
           <div className='flex flex-row mb-4'>
             <h2 className='text-4xl font-bold mb-2 text-black'>Background</h2>
           </div>
@@ -54,7 +54,7 @@ export const AilevateWork = () => {
           </div>
         </div>
 
-        <div className='flex flex-col flex-auto items-center bg-white mt-4 w-1/2'>
+        <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] mt-4 w-1/2'>
           <Container fixed>
             <img src='../../../public/ailevate-ai.png' alt='ailevate logo' />
           </Container>

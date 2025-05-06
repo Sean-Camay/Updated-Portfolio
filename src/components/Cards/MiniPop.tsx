@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 export const MiniPop = () => {
   return (
     <>
-      <Card sx={{ maxWidth: 520 }}>
+      <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 280, width: 350 }}
           image='../../../public/mini-pop-image.jpg'

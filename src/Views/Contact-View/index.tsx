@@ -1,17 +1,94 @@
+import { Button } from '@mui/material'
 import { Footer } from '../../components/Footer/FooterComponent'
 import { Header } from '../../components/Header/HeaderComponent'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import SendIcon from '@mui/icons-material/Send'
 
 export const ContactView = () => {
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:sdunland@gmail.com'
+  }
   return (
     <>
       <Header />
 
-      <div className='flex flex-col items-center justify-center bg-white w-screen h-screen'>
-        <div className='flex-row mb-4'></div>
-        <h1 className='text-4xl font-bold mb-4'>Welcome to the Contact View</h1>
-        <p className='text-lg text-gray-700'>
-          This is the contact view of your application.
-        </p>
+      <div className='flex flex-col items-center justify-center bg-[#FFFCF9] w-screen h-screen'>
+        <div className='flex flex-row'>
+          <h1 className='text-4xl font-bold mb-6 text-black'>
+            Shoot me a message
+          </h1>
+        </div>
+
+        <div className='flex flex-row items-center'>
+          <div className='pr-4'>
+            <Button
+              variant='outlined'
+              endIcon={<SendIcon />}
+              onClick={handleEmailClick}
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              Send me an email
+            </Button>
+          </div>
+
+          <div className='pr-4'>
+            <Button
+              variant='outlined'
+              endIcon={<LinkedInIcon />}
+              href='https://www.linkedin.com/in/sean-camay-unland-b46b2743/'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              LinkedIn
+            </Button>
+          </div>
+
+          <div className='pr-4'>
+            <Button
+              variant='outlined'
+              endIcon={<GitHubIcon />}
+              href='https://github.com/Sean-Camay/'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              GitHub
+            </Button>
+          </div>
+        </div>
       </div>
 
       <Footer />

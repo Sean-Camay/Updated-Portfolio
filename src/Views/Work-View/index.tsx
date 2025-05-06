@@ -7,10 +7,10 @@ import { Ailevate } from '../../components/Cards/Ailevate'
 
 export const WorkView = () => {
   return (
-    <div className='bg-white w-screen h-screen'>
+    <div className='bg-[#FFFCF9] w-screen h-screen'>
       <Header />
 
-      <div className='flex flex-col items-center justify-center bg-white'>
+      <div className='flex flex-col items-center justify-center bg-[#FFFCF9]'>
         <div className='flex flex-row mb-4'>
           <h1 className='text-4xl font-bold mb-4 text-black'>Work</h1>
         </div>
