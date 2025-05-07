@@ -1,3 +1,5 @@
+import AilevateImage from '../../assets/ailevate-ai.png'
+
 import {
   Button,
   Card,
@@ -14,7 +16,7 @@ export const Ailevate = () => {
       <Card sx={{ maxWidth: 5200, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 140, width: 350 }}
-          image='../../../public/ailevate-ai.png'
+          image={AilevateImage}
           title='ailevate'
         />
         <CardContent>

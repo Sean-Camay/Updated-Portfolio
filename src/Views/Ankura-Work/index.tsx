@@ -1,3 +1,4 @@
+import AnkuraImage from '../../assets/ankura-ai.png'
 import { Button, Typography } from '@mui/material'
 import { Footer } from '../../components/Footer/FooterComponent'
 import { Header } from '../../components/Header/HeaderComponent'
@@ -102,7 +103,7 @@ export const AnkuraWork = () => {
 
         <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] mt-4'>
           <Container fixed>
-            <img src='../../../public/ankura-ai.png' alt='ankura logo' />
+            <img src={AnkuraImage} alt='ankura logo' />
           </Container>
         </div>
       </div>

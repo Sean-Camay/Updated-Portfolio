@@ -1,3 +1,4 @@
+import MiniPopImage from '../../assets/mini-pop-image.jpg'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -12,7 +13,7 @@ export const MiniPop = () => {
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 280, width: 350 }}
-          image='../../../public/mini-pop-image.jpg'
+          image={MiniPopImage}
           title='mini pop'
         />
         <CardContent>

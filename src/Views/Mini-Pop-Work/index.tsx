@@ -1,3 +1,4 @@
+import MiniPopImage from '../../assets/mini-pop-image.jpg'
 import { Button, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { Header } from '../../components/Header/HeaderComponent'
@@ -73,7 +74,7 @@ export const MiniPopWork = () => {
 
         <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] my-4 w-1/2'>
           <Container fixed>
-            <img src='../../../public/mini-pop-image.jpg' alt='mini pop' />
+            <img src={MiniPopImage} alt='mini pop' />
           </Container>
         </div>
       </div>

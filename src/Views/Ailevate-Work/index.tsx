@@ -1,3 +1,4 @@
+import AilevateImage from '../../assets/ailevate-ai.png'
 import { Typography, Button } from '@mui/material'
 import { Container } from '@mui/system'
 import { Footer } from '../../components/Footer/FooterComponent'
@@ -56,7 +57,7 @@ export const AilevateWork = () => {
 
         <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] mt-4 w-1/2'>
           <Container fixed>
-            <img src='../../../public/ailevate-ai.png' alt='ailevate logo' />
+            <img src={AilevateImage} alt='ailevate logo' />
           </Container>
         </div>
       </div>

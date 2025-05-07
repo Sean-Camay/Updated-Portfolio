@@ -1,3 +1,4 @@
+import CodingPicture from '../../assets/coding_on_top_of_world.png'
 import { Card, CardMedia } from '@mui/material'
 
 export const MainViewCard = () => {
@@ -10,7 +11,7 @@ export const MainViewCard = () => {
       /> */}
       <CardMedia
         sx={{ height: 420, width: 360 }}
-        image='../../../coding on top of world.PNG'
+        image={CodingPicture}
         title='me coding'
       />
     </Card>

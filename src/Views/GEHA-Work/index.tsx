@@ -1,3 +1,4 @@
+import GEHAImage from '../../assets/geha-image.png'
 import { Button, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { Header } from '../../components/Header/HeaderComponent'
@@ -52,7 +53,7 @@ export const GEHAWork = () => {
 
         <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] my-4 w-1/2'>
           <Container fixed>
-            <img src='../../../public/geha-image.png' alt='GEHA' />
+            <img src={GEHAImage} alt='GEHA' />
           </Container>
         </div>
       </div>

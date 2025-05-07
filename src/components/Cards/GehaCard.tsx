@@ -1,3 +1,4 @@
+import GEHAImage from '../../assets/geha-image.png'
 import {
   Button,
   Card,
@@ -14,7 +15,7 @@ export const GehaCard = () => {
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 280, width: 350 }}
-          image='../../../public/geha-image.png'
+          image={GEHAImage}
           title='mini pop'
         />
         <CardContent>

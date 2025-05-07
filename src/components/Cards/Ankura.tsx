@@ -1,3 +1,5 @@
+import AnkuraImage from '../../assets/ankura-ai.png'
+
 import {
   Button,
   Card,
@@ -14,7 +16,7 @@ export const Ankura = () => {
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
         <CardMedia
           sx={{ height: 140, width: 350 }}
-          image='../../../public/ankura-ai.png'
+          image={AnkuraImage}
           title='ankura'
         />
         <CardContent>
