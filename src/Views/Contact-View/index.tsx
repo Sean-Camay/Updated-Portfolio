@@ -1,9 +1,11 @@
-import { Button, ButtonGroup } from '@mui/material'
+import { Button, ButtonGroup, Typography } from '@mui/material'
 import { Footer } from '../../components/Footer/FooterComponent'
 import { Header } from '../../components/Header/HeaderComponent'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import SendIcon from '@mui/icons-material/Send'
+import MusicNoteIcon from '@mui/icons-material/MusicNote'
+import AlbumIcon from '@mui/icons-material/Album'
 
 export const ContactView = () => {
   const handleEmailClick = () => {
@@ -15,80 +17,17 @@ export const ContactView = () => {
 
       <div className='flex flex-col items-center justify-center bg-[#FFFCF9] w-screen h-screen'>
         <div className='flex flex-row'>
-          <h1 className='text-4xl font-bold mb-6 text-black'>
+          {/* <h1 className='text-4xl font-bold mb-6 text-black'>
             Shoot me a message
-          </h1>
+          </h1> */}
+          <Typography
+            variant='h2'
+            sx={{ color: 'text.primary', fontWeight: 700 }}
+          >
+            Connect
+          </Typography>
         </div>
 
-        {/* <div className='flex flex-row items-center'>
-          <div className='pr-4'>
-            <Button
-              variant='outlined'
-              endIcon={<SendIcon />}
-              onClick={handleEmailClick}
-              sx={{
-                backgroundColor: '#FFFCF9',
-                color: '#1F2421',
-                borderRadius: '50px',
-                borderColor: 'black',
-                padding: '10px 20px',
-                '&:hover': {
-                  backgroundColor: '#1F2421',
-                  borderColor: 'white',
-                  color: 'white',
-                },
-              }}
-            >
-              Send me an email
-            </Button>
-          </div>
-
-          <div className='pr-4'>
-            <Button
-              variant='outlined'
-              endIcon={<LinkedInIcon />}
-              href='https://www.linkedin.com/in/sean-camay-unland-b46b2743/'
-              target='_blank'
-              sx={{
-                backgroundColor: '#FFFCF9',
-                color: '#1F2421',
-                borderRadius: '50px',
-                borderColor: 'black',
-                padding: '10px 20px',
-                '&:hover': {
-                  backgroundColor: '#1F2421',
-                  borderColor: 'white',
-                  color: 'white',
-                },
-              }}
-            >
-              LinkedIn
-            </Button>
-          </div>
-
-          <div className='pr-4'>
-            <Button
-              variant='outlined'
-              endIcon={<GitHubIcon />}
-              href='https://github.com/Sean-Camay/'
-              target='_blank'
-              sx={{
-                backgroundColor: '#FFFCF9',
-                color: '#1F2421',
-                borderRadius: '50px',
-                borderColor: 'black',
-                padding: '10px 20px',
-                '&:hover': {
-                  backgroundColor: '#1F2421',
-                  borderColor: 'white',
-                  color: 'white',
-                },
-              }}
-            >
-              GitHub
-            </Button>
-          </div>
-        </div> */}
         <div className='flex flex-row'>
           <ButtonGroup
             variant='text'
@@ -151,7 +90,45 @@ export const ContactView = () => {
                 },
               }}
             >
-              GitHub
+              Git Hub
+            </Button>
+            <Button
+              endIcon={<MusicNoteIcon />}
+              href='https://music.apple.com/us/artist/analog-robot/1276359301'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              Apple Music
+            </Button>
+            <Button
+              endIcon={<AlbumIcon />}
+              href='https://open.spotify.com/artist/5X2KFhPykT0QGAll0TgeiF'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              Spotify
             </Button>
           </ButtonGroup>
         </div>

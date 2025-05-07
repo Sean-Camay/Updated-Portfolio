@@ -32,6 +32,7 @@ export const AboutView = () => {
         <div className='flex-row mb-4'>
           <h1 className='text-4xl font-bold mb-4 text-black'>Tech Stack</h1>
         </div>
+
         <div className='flex-row justify-center mb-4'>
           <Chip
             label='Javascript/HTML/CSS'
