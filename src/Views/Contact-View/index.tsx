@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import { Button, ButtonGroup } from '@mui/material'
 import { Footer } from '../../components/Footer/FooterComponent'
 import { Header } from '../../components/Header/HeaderComponent'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
@@ -20,7 +20,7 @@ export const ContactView = () => {
           </h1>
         </div>
 
-        <div className='flex flex-row items-center'>
+        {/* <div className='flex flex-row items-center'>
           <div className='pr-4'>
             <Button
               variant='outlined'
@@ -88,6 +88,72 @@ export const ContactView = () => {
               GitHub
             </Button>
           </div>
+        </div> */}
+        <div className='flex flex-row'>
+          <ButtonGroup
+            variant='text'
+            size='large'
+            color='primary'
+            aria-label='Basic button group'
+            sx={{ color: '#1F2421', borderColor: '#1F2421' }}
+          >
+            <Button
+              endIcon={<SendIcon />}
+              onClick={handleEmailClick}
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              Email
+            </Button>
+            <Button
+              endIcon={<LinkedInIcon />}
+              href='https://www.linkedin.com/in/sean-camay-unland-b46b2743/'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              LinkedIn
+            </Button>
+            <Button
+              endIcon={<GitHubIcon />}
+              href='https://github.com/Sean-Camay/'
+              target='_blank'
+              sx={{
+                backgroundColor: '#FFFCF9',
+                color: '#1F2421',
+                borderRadius: '50px',
+                borderColor: 'black',
+                padding: '10px 20px',
+                '&:hover': {
+                  backgroundColor: '#1F2421',
+                  borderColor: 'white',
+                  color: 'white',
+                },
+              }}
+            >
+              GitHub
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
 
