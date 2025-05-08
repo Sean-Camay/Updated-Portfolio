@@ -23,4 +23,5 @@ export const CustomThemeProvider = ({ children }: ThemeProps) => {
 }
 
 // Also export the theme in case you need access to it elsewhere
+// eslint-disable-next-line react-refresh/only-export-components
 export { theme }
