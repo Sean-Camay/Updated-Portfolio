@@ -2,7 +2,7 @@ import { Header } from '../../components/Header/HeaderComponent'
 import { Footer } from '../../components/Footer/FooterComponent'
 import { MainViewCard } from '../../components/Cards/MainViewCard'
 // import { AppleMusicPlayer } from '../../components/MusicPlayer/AppleMusicPlayer'
-import MySong from '../../assets/I_Woke_Up_On_This_Planet.mp3'
+import SongOne from '../../assets/I_Woke_Up_On_This_Planet.mp3'
 import SongTwo from '../../assets/Interlude.mp3'
 import { Typography } from '@mui/material'
 import { BoomBox } from '../../components/MusicPlayer/BoomBox'
@@ -37,7 +37,7 @@ export const MainView = () => {
             country='us'
             slug='i-woke-up-on-this-planet-single'
           /> */}
-          <BoomBox playlist={[MySong, SongTwo]} />
+          <BoomBox playlist={[SongOne, SongTwo]} />
         </div>
       </div>
       <Footer />
