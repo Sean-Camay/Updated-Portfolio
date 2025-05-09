@@ -4,9 +4,9 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { IconButton } from '@mui/material'
+import './BoomBox.css'
 
 interface BoomBoxProps {
-  // audioUrl: string
   playlist: string[]
 }
 
@@ -145,7 +145,11 @@ export const BoomBox = ({ playlist }: BoomBoxProps) => {
       <div className='flex justify-between items-center mb-4'>
         {/* Left Speaker */}
         <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative'>
-          <div className='w-12 h-12 bg-gray-600 rounded-full' />
+          <div
+            className={`w-12 h-12 bg-gray-600 rounded-full ${
+              isPlaying ? 'speaker-pulse' : ''
+            }`}
+          />
         </div>
 
         {/* Center Tape Deck */}
@@ -167,7 +171,11 @@ export const BoomBox = ({ playlist }: BoomBoxProps) => {
 
         {/* Right Speaker */}
         <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative'>
-          <div className='w-12 h-12 bg-gray-600 rounded-full' />
+          <div
+            className={`w-12 h-12 bg-gray-600 rounded-full ${
+              isPlaying ? 'speaker-pulse-delayed' : ''
+            }`}
+          />
         </div>
       </div>
 

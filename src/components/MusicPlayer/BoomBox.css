@@ -1,0 +1,23 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    background-color: #4b5563; /* gray-600 */
+  }
+  50% {
+    transform: scale(0.9);
+    background-color: #9ca3af; /* gray-400 */
+  }
+  100% {
+    transform: scale(1);
+    background-color: #4b5563; /* gray-600 */
+  }
+}
+
+.speaker-pulse {
+  animation: pulse 0.75s infinite;
+}
+
+.speaker-pulse-delayed {
+  animation: pulse 0.75s infinite;
+  animation-delay: 0.35s; /* Slightly offset from the left speaker */
+}
