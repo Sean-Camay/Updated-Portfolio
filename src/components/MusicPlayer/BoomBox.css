@@ -4,7 +4,7 @@
     background-color: #4b5563; /* gray-600 */
   }
   50% {
-    transform: scale(0.9);
+    transform: scale(1.3);
     background-color: #9ca3af; /* gray-400 */
   }
   100% {
@@ -20,4 +20,64 @@
 .speaker-pulse-delayed {
   animation: pulse 0.75s infinite;
   animation-delay: 0.35s; /* Slightly offset from the left speaker */
+}
+
+.speaker-container {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #333;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.speaker-inner {
+  width: 14px;
+  height: 14px;
+  background-color: #4b5563;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.speaker-grid {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  background-image: repeating-linear-gradient(
+      0deg,
+      #333,
+      #333 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #333,
+      #333 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Additional concentric rings for more speaker detail */
+.speaker-container::before {
+  content: '';
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+.speaker-container::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px solid #333;
 }

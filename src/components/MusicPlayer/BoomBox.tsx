@@ -144,12 +144,15 @@ export const BoomBox = ({ playlist }: BoomBoxProps) => {
       {/* Speakers Tape Deck */}
       <div className='flex justify-between items-center mb-4'>
         {/* Left Speaker */}
-        <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative'>
-          <div
+        <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative speaker-container'>
+          {/* <div
             className={`w-12 h-12 bg-gray-600 rounded-full ${
               isPlaying ? 'speaker-pulse' : ''
             }`}
-          />
+          > */}
+          <div className={`speaker-inner ${isPlaying ? 'speaker-pulse' : ''}`}>
+            <div className='speaker-grid'></div>
+          </div>
         </div>
 
         {/* Center Tape Deck */}
@@ -170,12 +173,19 @@ export const BoomBox = ({ playlist }: BoomBoxProps) => {
         </div>
 
         {/* Right Speaker */}
-        <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative'>
-          <div
+        <div className='w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center relative speaker-container'>
+          {/* <div
             className={`w-12 h-12 bg-gray-600 rounded-full ${
               isPlaying ? 'speaker-pulse-delayed' : ''
             }`}
-          />
+          > */}
+          <div
+            className={`speaker-inner ${
+              isPlaying ? 'speaker-pulse-delayed' : ''
+            }`}
+          >
+            <div className='speaker-grid'></div>
+          </div>
         </div>
       </div>
 
