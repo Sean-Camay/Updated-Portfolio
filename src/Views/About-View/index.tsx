@@ -1,5 +1,8 @@
 import { Header } from '../../components/Header/HeaderComponent'
 import { Footer } from '../../components/Footer/FooterComponent'
+import { SpinningRecord } from '../../components/SpinningRecord/SpinningRecord'
+import { FunctionAnimator } from '../../components/FunctionAnimator/FunctionAnimator'
+import ShowtimeSong from '../../assets/And_Now_Its_Showtime.mp3'
 import { Chip, Typography } from '@mui/material'
 
 export const AboutView = () => {
@@ -13,7 +16,16 @@ export const AboutView = () => {
             From Vinyl to Variables
           </h1>
         </div>
-        <div className='flex-row mb-4'>
+        <div className='flex flex-row w-full max-w-6xl justify-between items-center px-4 mb-8'>
+          <div className='flex-1'>
+            <SpinningRecord />
+          </div>
+
+          <div className='flex-1 ml-8'>
+            <FunctionAnimator audioUrl={ShowtimeSong} typingSpeed={80} />
+          </div>
+        </div>
+        <div className='flex-row my-4'>
           <Typography
             variant='body1'
             sx={{ color: 'text.primary', width: '40em' }}
