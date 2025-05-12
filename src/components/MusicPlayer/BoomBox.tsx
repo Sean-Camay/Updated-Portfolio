@@ -135,7 +135,7 @@ export const BoomBox = ({ playlist }: BoomBoxProps) => {
   }, [])
 
   return (
-    <div className='w-full max-w-md mx-auto p-6 bg-gray-800 rounded-2xl shadow-2xl text-gray-100'>
+    <div className='w-full max-w-xl mx-auto p-6 bg-gray-800 rounded-2xl shadow-2xl text-gray-100'>
       {/* Top Bar */}
       <div className='flex flex-row justify-center text-xl font-bold'>
         My Music
