@@ -1,7 +1,7 @@
 import Particles from 'react-tsparticles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { Typography } from '@mui/material'
 
 interface NamePlateProps {
@@ -14,6 +14,26 @@ export const NamePlate = ({ name, margin }: NamePlateProps) => {
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine)
+  }, [])
+
+  useEffect(() => {
+    const resizeParticleContainer = () => {
+      if (textRef.current) {
+        const particleContainer = document.getElementById('particles-container')
+        if (particleContainer) {
+          const rect = textRef.current.getBoundingClientRect()
+          particleContainer.style.width = `${rect.width}px`
+          particleContainer.style.height = `${rect.height}px`
+        }
+      }
+    }
+
+    resizeParticleContainer()
+    window.addEventListener('resize', resizeParticleContainer)
+
+    return () => {
+      window.removeEventListener('resize', resizeParticleContainer)
+    }
   }, [])
   return (
     // <div className='relative inline-block mb-8'>
