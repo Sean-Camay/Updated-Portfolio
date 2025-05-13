@@ -3,7 +3,11 @@ import SeanCodingImage from '../../assets/sean-coding.jpg'
 import SeanMusicImage from '../../assets/sean-music.jpg'
 import { Box, Card } from '@mui/material'
 
-export const MainViewCard = () => {
+interface MainViewCardProps {
+  style?: React.CSSProperties
+}
+
+export const MainViewCard = ({ style }: MainViewCardProps) => {
   const [isHovering, setIsHovering] = useState(false)
 
   return (
@@ -14,6 +18,7 @@ export const MainViewCard = () => {
         width: 360,
         height: 420,
         overflow: 'hidden',
+        ...style,
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
