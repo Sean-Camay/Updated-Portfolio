@@ -19,7 +19,7 @@ export const WorkView = () => {
           <div className='p-4'>
             <Ailevate />
           </div>
-          <div>
+          <div className='p-4'>
             <Ankura />
           </div>
         </div>
