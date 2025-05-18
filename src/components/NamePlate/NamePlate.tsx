@@ -36,7 +36,6 @@ export const NamePlate = ({ name, margin }: NamePlateProps) => {
     }
   }, [])
   return (
-    // <div className='relative inline-block mb-8'>
     <div className={`relative inline-block ${margin}`}>
       <div
         id='particles-container'
