@@ -1,4 +1,3 @@
-import MiniPopImage from '../../assets/mini-pop-image.jpg'
 import { Button, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { Header } from '../../components/Header/HeaderComponent'
@@ -73,8 +72,16 @@ export const MiniPopWork = () => {
         </div>
 
         <div className='flex flex-col flex-auto items-center bg-[#FFFCF9] my-4 w-1/2'>
-          <Container fixed>
-            <img src={MiniPopImage} alt='mini pop' />
+          <Container fixed className='h-full'>
+            <div className='border border-gray-300 rounded-lg overflow-hidden shadow-lg w-full h-[500px]'>
+              <iframe
+                src='https://mini-pop.netlify.app/'
+                title='Mini Pop Web App'
+                className='w-full h-full'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                sandbox='allow-same-origin allow-scripts allow-forms'
+              ></iframe>
+            </div>
           </Container>
         </div>
       </div>
