@@ -50,7 +50,7 @@ export const ContactView = () => {
             </Button>
             <Button
               endIcon={<LinkedInIcon />}
-              href='https://www.linkedin.com/in/sean-camay-unland-b46b2743/'
+              href='https://www.linkedin.com/in/sean-camay-b46b2743/'
               target='_blank'
               sx={{
                 backgroundColor: '#FFFCF9',
