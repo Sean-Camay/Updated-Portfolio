@@ -60,14 +60,14 @@ export const AboutView = () => {
           <h1 className='text-4xl font-bold mb-4 text-black'>Tech Stack</h1>
         </div>
 
-        <div className='flex-row justify-center mb-4'>
+        <div className='flex mb-4 cursor-default'>
+          <Chip label='React' variant='outlined' className='m-2' />
+          <Chip label='Vue.js' variant='outlined' className='m-2' />
           <Chip
             label='Javascript/HTML/CSS'
             variant='outlined'
             className='m-2'
           />
-          <Chip label='React' variant='outlined' className='m-2' />
-          <Chip label='Vue.js' variant='outlined' className='m-2' />
           <br />
           <Chip label='Typescript' variant='outlined' className='m-2' />
           <Chip label='Tailwind' variant='outlined' className='m-2' />
@@ -81,14 +81,9 @@ export const AboutView = () => {
           <Chip label='Azure Dev Ops' variant='outlined' className='m-2' />
           <Chip label='Jira' variant='outlined' className='m-2' />
           <br />
-          <Chip label='OOP' variant='outlined' className='m-2' />
-          <Chip
-            label='Functional Programming'
-            variant='outlined'
-            className='m-2'
-          />
-          <Chip label='Slack' variant='outlined' className='m-2' />
-          <Chip label='Microsoft Suite' variant='outlined' className='m-2' />
+          <Chip label='Material UI' variant='outlined' className='m-2' />
+          <Chip label='Storybook' variant='outlined' className='m-2' />
+          <br />
         </div>
       </div>
 
