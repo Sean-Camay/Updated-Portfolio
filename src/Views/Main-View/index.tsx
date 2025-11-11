@@ -39,7 +39,6 @@ export const MainView = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   )
