@@ -19,32 +19,44 @@ export const CardCollector = () => {
   const [nameInput, setNameInput] = useState<string>('')
 
   useEffect(() => {
+    const abortController = new AbortController()
+    let isMounted = true
     const getRandomCards = async (count = 10) => {
       try {
         setLoading(true)
-        // const response = await axios.get(
-        //   'https://api.scryfall.com/cards/random'
-        // )
-        // console.log('response', response.data)
-        // setRandomCards([response.data])
 
         const requests = Array.from({ length: count - 1 }, () =>
           axios.get('https://api.scryfall.com/cards/random')
         )
 
         const cards = await Promise.all(requests)
-        setRandomCards((prevCards) => [
-          ...prevCards,
-          ...cards.map((card) => card.data),
-        ])
+
+        if (isMounted) {
+          setRandomCards((prevCards) => [
+            ...prevCards,
+            ...cards.map((card) => card.data),
+          ])
+        }
       } catch (error) {
-        console.error('Error fetching random card:', error)
+        if (axios.isCancel(error)) {
+          console.log('Request canceled', error.message)
+        } else {
+          console.error('Error fetching random card:', error)
+        }
       } finally {
-        setLoading(false)
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
 
     getRandomCards()
+
+    // cleanup function
+    return () => {
+      isMounted = false
+      abortController.abort()
+    }
   }, [])
 
   const getMoreCards = async () => {
