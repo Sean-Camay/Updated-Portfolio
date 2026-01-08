@@ -14,11 +14,13 @@ export const Ankura = () => {
   return (
     <>
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
-        <CardMedia
-          sx={{ height: 140, width: 350 }}
-          image={AnkuraImage}
-          title='ankura'
-        />
+        <Link to='/ankura-work'>
+          <CardMedia
+            sx={{ height: 140, width: 350 }}
+            image={AnkuraImage}
+            title='ankura'
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             Ankura AI

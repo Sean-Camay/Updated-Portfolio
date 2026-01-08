@@ -11,11 +11,13 @@ export const MiniPop = () => {
   return (
     <>
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
-        <CardMedia
-          sx={{ height: 280, width: 350 }}
-          image={MiniPopImage}
-          title='mini pop'
-        />
+        <Link to='/mini-pop-work'>
+          <CardMedia
+            sx={{ height: 280, width: 350 }}
+            image={MiniPopImage}
+            title='mini pop'
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             Mini-Pop

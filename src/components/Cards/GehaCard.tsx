@@ -13,11 +13,13 @@ export const GehaCard = () => {
   return (
     <>
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
-        <CardMedia
-          sx={{ height: 280, width: 350 }}
-          image={GEHAImage}
-          title='mini pop'
-        />
+        <Link to='/geha-work'>
+          <CardMedia
+            sx={{ height: 280, width: 350 }}
+            image={GEHAImage}
+            title='mini pop'
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             GEHA Solutions

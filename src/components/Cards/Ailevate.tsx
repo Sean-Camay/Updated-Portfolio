@@ -14,11 +14,13 @@ export const Ailevate = () => {
   return (
     <>
       <Card sx={{ maxWidth: 520, backgroundColor: '#FFFCF9' }}>
-        <CardMedia
-          sx={{ height: 140, width: 350 }}
-          image={AilevateImage}
-          title='ailevate'
-        />
+        <Link to='/ailevate-work'>
+          <CardMedia
+            sx={{ height: 140, width: 350 }}
+            image={AilevateImage}
+            title='ailevate'
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             Ailevate AI
