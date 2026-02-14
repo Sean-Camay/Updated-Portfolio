@@ -1,3 +1,4 @@
+// import { Suspense, use, useEffect, useState, ChangeEvent } from 'react'
 import { useEffect, useState, ChangeEvent } from 'react'
 import axios from 'axios'
 import { Button, TextField } from '@mui/material'
@@ -13,6 +14,47 @@ interface RandomMagicCard {
   }
 }
 
+// const fetchRandomCards = (count = 10) => {
+//   const requests = Array.from({ length: count }, () =>
+//     axios.get('https://api.scryfall.com/cards/random'),
+//   )
+//   return Promise.all(requests).then((responses) =>
+//     responses.map((response) => response.data),
+//   )
+// }
+
+// const CardList = ({
+//   cardsPromise,
+// }: {
+//   cardsPromise: Promise<RandomMagicCard[]>
+// }) => {
+//   const cards = use(cardsPromise)
+//   return (
+//     <div>
+//       {cards.map((card) => (
+//         <div key={card.name}>
+//           <h2>Name: {card.name}</h2>
+//           <p>Type: {card.type_line}</p>
+//           <p>Mana Cost: {card.mana_cost}</p>
+//           <img src={card.image_uris?.png} alt={card.name} />
+//           <p>Artist: {card.artist}</p>
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// example using Suspense
+// export const CardCollector = () => {
+//   const [cardsPromise] = useState(() => fetchRandomCards(10))
+
+//   return (
+//     <Suspense fallback={<p>Loading...</p>}>
+//       <CardList cardsPromise={cardsPromise} />
+//     </Suspense>
+//   )
+// }
+
 export const CardCollector = () => {
   const [randomCards, setRandomCards] = useState<RandomMagicCard[]>([])
   const [loading, setLoading] = useState<boolean>(false)
@@ -21,12 +63,13 @@ export const CardCollector = () => {
   useEffect(() => {
     const abortController = new AbortController()
     let isMounted = true
+
     const getRandomCards = async (count = 10) => {
       try {
         setLoading(true)
 
         const requests = Array.from({ length: count - 1 }, () =>
-          axios.get('https://api.scryfall.com/cards/random')
+          axios.get('https://api.scryfall.com/cards/random'),
         )
 
         const cards = await Promise.all(requests)
@@ -86,10 +129,9 @@ export const CardCollector = () => {
       />
       <Button onClick={getMoreCards}>Get More Cards</Button>
       <div>
-        {loading ? (
+        {loading ?
           <p>Loading...</p>
-        ) : (
-          randomCards.map((card) => (
+        : randomCards.map((card) => (
             <div key={card.name}>
               <h2>Name: {card.name}</h2>
               <p>Type: {card.type_line}</p>
@@ -98,7 +140,7 @@ export const CardCollector = () => {
               <p>Artist: {card.artist}</p>
             </div>
           ))
-        )}
+        }
       </div>
     </>
   )
