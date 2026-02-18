@@ -105,9 +105,7 @@ export const CardCollector = () => {
   const getMoreCards = async () => {
     try {
       const response = await axios.get('https://api.scryfall.com/cards/random')
-      console.log('response', response.data)
       setRandomCards((prevCards) => [...prevCards, response.data])
-      console.log('randomCards', randomCards)
     } catch (error) {
       console.error('Error fetching random card:', error)
     } finally {
