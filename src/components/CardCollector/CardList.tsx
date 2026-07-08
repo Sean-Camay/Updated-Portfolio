@@ -1,10 +1,10 @@
 import { RandomMagicCard } from '../../types/magicCard'
 
-export const CardList = ({
-  resource,
-}: {
+interface CardListProps {
   resource: { read: () => RandomMagicCard[] }
-}) => {
+}
+
+export const CardList = ({ resource }: CardListProps) => {
   const cards = resource.read()
   return (
     <div>

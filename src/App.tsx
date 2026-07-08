@@ -9,6 +9,7 @@ import { AnkuraWork } from './Views/Ankura-Work'
 import { AilevateWork } from './Views/Ailevate-Work'
 import { MiniPopWork } from './Views/Mini-Pop-Work'
 import { GEHAWork } from './Views/GEHA-Work'
+import { MusicView } from './Views/Music-View'
 import './App.css'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/ailevate-work' element={<AilevateWork />} />
           <Route path='/mini-pop-work' element={<MiniPopWork />} />
           <Route path='/geha-work' element={<GEHAWork />} />
+          <Route path='/music' element={<MusicView />} />
         </Routes>
       </CustomThemeProvider>
     </>

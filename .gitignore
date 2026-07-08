@@ -22,3 +22,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env
+/music-api/bin
+/music-api/lib
+
+# Python virtual environment
+/music-api/venv
+
+# Python cache
+/music-api/__pycache__
+/music-api/*.pyc
+/music-api/**/__pycache__
+
+# SQLite database
+/music-api/*.db
+/music-api/*.db-shm
+/music-api/*.db-wal
+
+# Audio uploads (optional - add if you don't want to commit audio files)
+/music-api/uploads

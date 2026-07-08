@@ -13,6 +13,9 @@ export const NavigationComponent = () => {
       <Link to='/work' className='mr-4'>
         <BasicButton title='Work' />
       </Link>
+      <Link to='/music' className='mr-4'>
+        <BasicButton title='Music' />
+      </Link>
       <Link to='/contact' className='mr-4'>
         <BasicButton title='Contact' />
       </Link>
