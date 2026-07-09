@@ -7,7 +7,7 @@ from datetime import timedelta
 import librosa  # For getting audio duration
 
 from models import TrackModel, get_db
-from schemas import TrackResponse
+from schemas import TrackResponse, TrackMetadataUpdate
 from auth import get_admin_user
 from config import UPLOAD_DIR, MAX_FILE_SIZE
 
@@ -152,3 +152,27 @@ async def delete_track(
     db.commit()
     
     return None
+
+@router.patch("/{track_id}", response_model=TrackResponse)
+async def update_track(
+    track_id: str,
+    track_update: TrackMetadataUpdate,
+    admin: dict = Depends(get_admin_user),
+    db: Session = Depends(get_db)
+):
+    """Update track metadata (admin only)"""
+    track = db.query(TrackModel).filter(TrackModel.id == track_id).first()
+    
+    if not track:
+        raise HTTPException(status_code=404, detail="Track not found")
+    
+    # Update only provided fields
+    update_data = track_update.dict(exclude_unset=True)
+    for field, value in update_data.items():
+        setattr(track, field, value)
+    
+    db.commit()
+    db.refresh(track)
+    
+    track.url = f"/api/tracks/{track.id}/stream"
+    return track

@@ -23,7 +23,13 @@ class TrackUpdate(BaseModel):
     duration: Optional[float] = Field(None, example=233.0)  # Duration in seconds
     album_art: Optional[str] = Field(None, example="https://example.com/album_art.jpg")  # URL or file path
     file_path: Optional[str] = Field(None, example="/path/to/audio/file.mp3")  # Path to audio file on server
-
+class TrackMetadataUpdate(BaseModel):
+    """Schema for updating track metadata only"""
+    title: Optional[str] = None
+    artist: Optional[str] = None
+    album: Optional[str] = None
+    album_art: Optional[str] = None
+    
 class TrackResponse(TrackBase):
     """Schema for track response (what API returns)"""
     id: str
