@@ -28,16 +28,12 @@ export const useUploadTracks = (token: string | null) => {
       formData.append('artist', artist)
       formData.append('album', album)
 
-      const response = await axios.post(
-        `${API_BASE_URL}/tracks/upload/`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data',
-          },
+      const response = await axios.post(`${API_BASE_URL}/tracks`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         },
-      )
+      })
 
       setError(null)
       return response.data as Track

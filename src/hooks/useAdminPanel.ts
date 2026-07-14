@@ -48,5 +48,6 @@ export const useAdminPanel = () => {
     uploadError,
     uploadLoading,
     uploadSuccess,
+    token,
   }
 }

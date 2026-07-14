@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status
+from fastapi import APIRouter, Depends, Form, HTTPException, UploadFile, File, status
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 import os
@@ -65,9 +65,9 @@ async def stream_track(track_id: str, db: Session = Depends(get_db)):
 @router.post("", response_model=TrackResponse)
 async def upload_track(
     file: UploadFile = File(...),
-    title: str = None,
-    artist: str = None,
-    album: str = None,
+    title: str = Form(None),
+    artist: str = Form(None),
+    album: str = Form(None),
     admin: dict = Depends(get_admin_user),
     db: Session = Depends(get_db)
 ):
@@ -82,15 +82,15 @@ async def upload_track(
             detail="File must be an audio file"
         )
     
-    # Check file size
-    file_size = await file.seek(0, 2)
+      # Read file content and check size
+    content = await file.read()
+    file_size = len(content)
+    
     if file_size > MAX_FILE_SIZE:
         raise HTTPException(
             status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
             detail=f"File too large. Max size: {MAX_FILE_SIZE / 1024 / 1024}MB"
         )
-    
-    await file.seek(0)
     
     # Generate unique filename
     file_extension = file.filename.split(".")[-1]
@@ -99,7 +99,6 @@ async def upload_track(
     
     # Save file to disk
     with open(file_path, "wb") as buffer:
-        content = await file.read()
         buffer.write(content)
     
     # Get audio duration using librosa

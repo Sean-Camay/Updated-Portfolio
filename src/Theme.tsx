@@ -11,6 +11,9 @@ const theme = createTheme({
       main: '#FFFCF9', // Your custom secondary color
     },
   },
+  typography: {
+    fontFamily: "'Quicksand', sans-serif",
+  },
 })
 
 // Create a ThemeProvider component to use in your app

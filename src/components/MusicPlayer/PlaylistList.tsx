@@ -6,6 +6,8 @@ interface PlaylistListProps {
   tracks: Track[]
   currentTrackIndex: number
   onSelectTrack: (index: number) => void
+  authToken?: string | null
+  onTrackDelete?: (trackId: string) => void
 }
 
 export const PlaylistList = ({

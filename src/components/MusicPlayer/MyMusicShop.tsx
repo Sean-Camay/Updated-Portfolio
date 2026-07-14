@@ -1,17 +1,28 @@
 import { useTracklist } from '../../hooks/useTracklist'
 import { useAdminPanel } from '../../hooks/useAdminPanel'
-import { CircularProgress, Box, Card, CardContent, Button } from '@mui/material'
+import {
+  CircularProgress,
+  Box,
+  Card,
+  CardContent,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+} from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { PlaylistPlayer } from './PlaylistPlayer'
 import { AdminLoginForm } from '../Forms/AdminLoginForm'
 import { TrackUploadForm } from '../Forms/TrackUploadForm'
 import { PlaylistDisplay } from '../Playlist/PlaylistDisplay'
+import { SettingsIcon } from 'lucide-react'
+import React from 'react'
 
 export const MyMusicShop = () => {
-  const { tracks, loading, error } = useTracklist()
+  const { tracks, loading, error, fetchTracks } = useTracklist()
   const {
-    showLogin,
-    setShowLogin,
+    // showLogin,
+    // setShowLogin,
     loginError,
     isAuthenticated,
     logout,
@@ -20,16 +31,83 @@ export const MyMusicShop = () => {
     uploadError,
     uploadLoading,
     uploadSuccess,
+    token,
   } = useAdminPanel()
 
-  if (loading) return <CircularProgress />
-  if (error) return <div>Error loading tracks: {error}</div>
+  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
+    null,
+  )
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElement(event.currentTarget)
+  }
+
+  const handleMenuClose = () => {
+    setAnchorElement(null)
+  }
+
+  const handleUploadWithRefresh = async (
+    file: File,
+    title: string,
+    artist: string,
+    album: string,
+  ) => {
+    await handleUpload(file, title, artist, album)
+    fetchTracks()
+  }
+
+  const handleTrackDelete = () => {
+    fetchTracks()
+  }
 
   if (loading) return <CircularProgress />
   if (error) return <div>Error loading tracks: {error}</div>
 
   return (
-    <Box className='p-5 max-w-4xl mx-auto text-center mb-12'>
+    <Box className='p-5 max-w-4xl mx-auto text-center'>
+      <Box>
+        <IconButton
+          onClick={handleMenuOpen}
+          size='small'
+          aria-controls='admin-menu'
+          aria-haspopup='true'
+        >
+          <SettingsIcon />
+        </IconButton>
+
+        <Menu
+          id='admin-menu'
+          anchorEl={anchorElement}
+          open={Boolean(anchorElement)}
+          onClose={handleMenuClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <MenuItem
+            disableRipple
+            sx={{ display: 'block', p: 2, minWidth: '440px' }}
+          >
+            {!isAuthenticated ?
+              <AdminLoginForm
+                loading={false}
+                error={loginError}
+                onLogin={handleLogin}
+                onCancel={handleMenuClose}
+              />
+            : <Box className='mb-5'>
+                <p>✓ Logged in as admin</p>
+                <Button
+                  variant='outlined'
+                  onClick={logout}
+                  endIcon={<LogoutIcon />}
+                >
+                  Logout
+                </Button>
+              </Box>
+            }
+          </MenuItem>
+        </Menu>
+      </Box>
       <div className='text-black text-center text-2xl font-bold mb-4'>
         My Music Shop
       </div>
@@ -45,52 +123,25 @@ export const MyMusicShop = () => {
         </Card>
       }
 
-      <PlaylistDisplay tracks={tracks} />
+      <PlaylistDisplay
+        tracks={tracks}
+        authToken={token}
+        onTrackDelete={handleTrackDelete}
+      />
 
-      <Card>
-        <CardContent>
-          <h2>Admin Area</h2>
-          {!isAuthenticated ?
-            <>
-              {!showLogin ?
-                <Button
-                  variant='contained'
-                  onClick={() => setShowLogin(true)}
-                  className='mb-5'
-                >
-                  Admin Login
-                </Button>
-              : <AdminLoginForm
-                  loading={false}
-                  error={loginError}
-                  onLogin={handleLogin}
-                  onCancel={() => setShowLogin(false)}
-                />
-              }
-            </>
-          : <>
-              <Box className='mb-5'>
-                <p>✓ Logged in as admin</p>
-                <Button
-                  variant='outlined'
-                  onClick={logout}
-                  endIcon={<LogoutIcon />}
-                >
-                  Logout
-                </Button>
-              </Box>
-              <hr className='my-5' />
-              <h3>Upload New Track</h3>
-              <TrackUploadForm
-                loading={uploadLoading}
-                error={uploadError}
-                success={uploadSuccess}
-                onUpload={handleUpload}
-              />
-            </>
-          }
-        </CardContent>
-      </Card>
+      {isAuthenticated && (
+        <Card className='mt-7'>
+          <CardContent>
+            <h3>Upload New Track</h3>
+            <TrackUploadForm
+              loading={uploadLoading}
+              error={uploadError}
+              success={uploadSuccess}
+              onUpload={handleUploadWithRefresh}
+            />
+          </CardContent>
+        </Card>
+      )}
     </Box>
   )
 }
