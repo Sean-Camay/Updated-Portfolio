@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Track } from '../../types/musicType'
+import { DraggableTrackItem } from './DraggableTrackItem'
 import {
   Box,
   Button,
@@ -7,12 +11,22 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
 } from '@mui/material'
-import { Track } from '../../types/musicType'
-import axios from 'axios'
-import { Trash2 } from 'lucide-react'
-import { useState } from 'react'
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core'
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable'
 
 const API_BASE_URL = 'http://localhost:8000/api'
 
@@ -21,6 +35,7 @@ interface PlaylistDisplayProps {
   authToken?: string | null
   onTrackDelete?: (trackId: string) => void
   onTrackClick?: (trackId: string) => void
+  onTrackReorder?: (tracks: Track[]) => void
 }
 
 export const PlaylistDisplay = ({
@@ -28,11 +43,22 @@ export const PlaylistDisplay = ({
   authToken,
   onTrackDelete,
   onTrackClick,
+  onTrackReorder,
 }: PlaylistDisplayProps) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [trackToDelete, setTrackToDelete] = useState<string | null>(null)
+  const [localTracks, setLocalTracks] = useState<Track[]>(tracks)
 
-  console.log('tracks:', tracks)
+  useEffect(() => {
+    setLocalTracks(tracks)
+  }, [tracks])
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  )
 
   const openDeleteDialog = (trackId: string) => {
     setTrackToDelete(trackId)
@@ -63,6 +89,19 @@ export const PlaylistDisplay = ({
       alert('Failed to delete track')
     }
   }
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+
+    if (over && active.id !== over.id) {
+      const oldIndex = localTracks.findIndex((t) => t.id === active.id)
+      const newIndex = localTracks.findIndex((t) => t.id === over.id)
+
+      const reordered = arrayMove(localTracks, oldIndex, newIndex)
+      setLocalTracks(reordered)
+      onTrackReorder?.(reordered)
+    }
+  }
   return (
     <>
       <Card className='mb-7'>
@@ -72,36 +111,25 @@ export const PlaylistDisplay = ({
           </h2>
           <Box style={{ maxHeight: '400px', overflowY: 'auto' }}>
             {tracks.length > 0 ?
-              tracks.map((track) => (
-                <Box
-                  key={track.id}
-                  style={{
-                    padding: '12px',
-                    borderBottom: '1px solid #e0e0e0',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
+              <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
+              >
+                <SortableContext
+                  items={localTracks.map((t) => t.id)}
+                  strategy={verticalListSortingStrategy}
                 >
-                  <Box
-                    onClick={() => onTrackClick?.(track.id)}
-                    style={{ cursor: onTrackClick ? 'pointer' : 'default' }}
-                  >
-                    <div style={{ fontWeight: 'bold' }}>{track.title}</div>
-                    <div style={{ fontSize: '12px', color: '#666' }}>
-                      {track.artist} • {track.album}
-                    </div>
-                  </Box>
-
-                  <IconButton
-                    size='small'
-                    onClick={() => openDeleteDialog(track.id)}
-                    style={{ color: '#d32f2f' }}
-                  >
-                    <Trash2 size={18} />
-                  </IconButton>
-                </Box>
-              ))
+                  {localTracks.map((track) => (
+                    <DraggableTrackItem
+                      key={track.id}
+                      track={track}
+                      onTrackClick={onTrackClick}
+                      onDelete={openDeleteDialog}
+                    />
+                  ))}
+                </SortableContext>
+              </DndContext>
             : <p>No tracks in library</p>}
           </Box>
         </CardContent>

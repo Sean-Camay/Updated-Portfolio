@@ -1,21 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTracklist } from '../../hooks/useTracklist'
 import { useAdminPanel } from '../../hooks/useAdminPanel'
 import {
   CircularProgress,
   Box,
-  Card,
-  CardContent,
   Button,
   IconButton,
   Menu,
   MenuItem,
+  Drawer,
 } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { AdminLoginForm } from '../Forms/AdminLoginForm'
 import { TrackUploadForm } from '../Forms/TrackUploadForm'
 import { PlaylistDisplay } from '../Playlist/PlaylistDisplay'
-import { SettingsIcon } from 'lucide-react'
+import { SettingsIcon, Upload } from 'lucide-react'
 
 interface MyMusicShopProps {
   loading: boolean
@@ -41,9 +40,8 @@ export const MyMusicShop = ({
     token,
   } = useAdminPanel()
 
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null,
-  )
+  const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null)
+  const [uploadDrawerOpen, setUploadDrawerOpen] = useState(false)
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElement(event.currentTarget)
@@ -81,14 +79,25 @@ export const MyMusicShop = ({
         }}
       >
         <div className='text-black text-2xl font-bold'>My Music Shop</div>
-        <IconButton
-          onClick={handleMenuOpen}
-          size='small'
-          aria-controls='admin-menu'
-          aria-haspopup='true'
-        >
-          <SettingsIcon />
-        </IconButton>
+        <Box style={{ display: 'flex', gap: '10px' }}>
+          {isAuthenticated && (
+            <IconButton
+              onClick={() => setUploadDrawerOpen(true)}
+              size='small'
+              aria-label='upload'
+            >
+              <Upload />
+            </IconButton>
+          )}
+          <IconButton
+            onClick={handleMenuOpen}
+            size='small'
+            aria-controls='admin-menu'
+            aria-haspopup='true'
+          >
+            <SettingsIcon />
+          </IconButton>
+        </Box>
 
         <Menu
           id='admin-menu'
@@ -131,19 +140,22 @@ export const MyMusicShop = ({
         onTrackClick={onTrackClick}
       />
 
-      {isAuthenticated && (
-        <Card className='mt-7'>
-          <CardContent>
-            <h3>Upload New Track</h3>
-            <TrackUploadForm
-              loading={uploadLoading}
-              error={uploadError}
-              success={uploadSuccess}
-              onUpload={handleUploadWithRefresh}
-            />
-          </CardContent>
-        </Card>
-      )}
+      {/* Upload Drawer Sidebar */}
+      <Drawer
+        anchor='right'
+        open={uploadDrawerOpen}
+        onClose={() => setUploadDrawerOpen(false)}
+      >
+        <Box style={{ width: '400px', padding: '20px' }}>
+          <h3>Upload New Track</h3>
+          <TrackUploadForm
+            loading={uploadLoading}
+            error={uploadError}
+            success={uploadSuccess}
+            onUpload={handleUploadWithRefresh}
+          />
+        </Box>
+      </Drawer>
     </Box>
   )
 }

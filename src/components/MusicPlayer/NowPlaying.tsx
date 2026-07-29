@@ -37,7 +37,13 @@ export const NowPlaying = ({
   onClose,
 }: NowPlayingProps) => {
   return (
-    <Card style={{ marginBottom: '20px', backgroundColor: '#080404' }}>
+    <Card
+      style={{
+        marginBottom: '20px',
+        backgroundColor: '#080404',
+        paddingBottom: 0,
+      }}
+    >
       <CardContent>
         <Box
           style={{ marginBottom: '2px', cursor: 'pointer' }}
@@ -50,13 +56,13 @@ export const NowPlaying = ({
           />
         </Box>
         <Box style={{ marginBottom: '2px' }}>
-          <div
-            style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}
-          >
-            {track.title}
-          </div>
-          <div style={{ fontSize: '14px', color: '#b4b0b0' }}>
-            {track.artist} • {track.album}
+          <div className='flex flex-row items-center'>
+            <div className='font-bold text-lg text-[#ffffff] pr-1'>
+              {track.title} -{' '}
+            </div>
+            <div className='text-[#979393] text-sm'>
+              {track.artist} • {track.album}
+            </div>
           </div>
         </Box>
 
@@ -77,14 +83,18 @@ export const NowPlaying = ({
           style={{
             display: 'flex',
             justifyContent: 'end',
-            gap: '10px',
+            gap: '4px',
             alignItems: 'center',
           }}
         >
           <IconButton
             onClick={onSkipPrevious}
             size='small'
-            style={{ color: 'white' }}
+            style={{
+              color: 'white',
+              border: '1px solid white',
+              borderRadius: '10%',
+            }}
           >
             <SkipPreviousIcon />
           </IconButton>
@@ -93,10 +103,9 @@ export const NowPlaying = ({
             onClick={onTogglePlay}
             size='small'
             style={{
-              // backgroundColor: '#1976d2',
               color: 'white',
-              width: '25px',
-              height: '25px',
+              border: '1px solid white',
+              borderRadius: '10%',
             }}
           >
             {isPlaying ?
@@ -107,11 +116,23 @@ export const NowPlaying = ({
           <IconButton
             onClick={onSkipNext}
             size='small'
-            style={{ color: 'white' }}
+            style={{
+              color: 'white',
+              border: '1px solid white',
+              borderRadius: '10%',
+            }}
           >
             <SkipNextIcon />
           </IconButton>
-          <IconButton onClick={onClose} size='small' style={{ color: 'white' }}>
+          <IconButton
+            onClick={onClose}
+            size='small'
+            style={{
+              color: 'white',
+              border: '1px solid white',
+              borderRadius: '10%',
+            }}
+          >
             <CloseIcon />
           </IconButton>
         </Box>
