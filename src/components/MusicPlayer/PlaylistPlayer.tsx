@@ -1,20 +1,34 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 import { Box } from '@mui/material'
 
 import { Track } from '../../types/musicType'
 import { NowPlaying } from './NowPlaying'
-import { PlaylistList } from './PlaylistList'
+
+export interface PlaylistPlayerRef {
+  playTrack: (trackId: string) => void
+}
 
 interface PlaylistPlayerProps {
   tracks: Track[]
 }
 
-export const PlaylistPlayer = ({ tracks }: PlaylistPlayerProps) => {
+export const PlaylistPlayer = forwardRef<
+  PlaylistPlayerRef,
+  PlaylistPlayerProps
+>(({ tracks }: PlaylistPlayerProps, ref) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [showPlayer, setShowPlayer] = useState(true)
 
   const currentTrack = tracks[currentTrackIndex]
 
@@ -28,6 +42,17 @@ export const PlaylistPlayer = ({ tracks }: PlaylistPlayerProps) => {
     }
     setIsPlaying(!isPlaying)
   }
+
+  useImperativeHandle(ref, () => ({
+    playTrack: (trackId: string) => {
+      const trackIndex = tracks.findIndex((track) => track.id === trackId)
+      if (trackIndex !== -1) {
+        setCurrentTrackIndex(trackIndex)
+        setIsPlaying(true)
+        setShowPlayer(true)
+      }
+    },
+  }))
 
   const skipNext = useCallback(() => {
     const nextIndex =
@@ -43,12 +68,6 @@ export const PlaylistPlayer = ({ tracks }: PlaylistPlayerProps) => {
     setCurrentTrackIndex(prevIndex)
     setIsPlaying(false)
   }, [currentTrackIndex, tracks.length])
-
-  // Play selected track from playlist
-  const playTrack = (index: number) => {
-    setCurrentTrackIndex(index)
-    setIsPlaying(false)
-  }
 
   useEffect(() => {
     if (!audioRef.current || !currentTrack) return
@@ -120,22 +139,21 @@ export const PlaylistPlayer = ({ tracks }: PlaylistPlayerProps) => {
     <Box>
       <audio ref={audioRef} crossOrigin='anonymous' />
 
-      <NowPlaying
-        track={currentTrack}
-        isPlaying={isPlaying}
-        currentTime={currentTime}
-        duration={duration}
-        onTogglePlay={togglePlay}
-        onSkipNext={skipNext}
-        onSkipPrevious={skipPrevious}
-        onSeek={handleSeek}
-      />
-
-      <PlaylistList
-        tracks={tracks}
-        currentTrackIndex={currentTrackIndex}
-        onSelectTrack={playTrack}
-      />
+      {showPlayer && (
+        <NowPlaying
+          track={currentTrack}
+          isPlaying={isPlaying}
+          currentTime={currentTime}
+          duration={duration}
+          onTogglePlay={togglePlay}
+          onSkipNext={skipNext}
+          onSkipPrevious={skipPrevious}
+          onSeek={handleSeek}
+          onClose={() => setShowPlayer(false)}
+        />
+      )}
     </Box>
   )
-}
+})
+
+PlaylistPlayer.displayName = 'PlaylistPlayer'

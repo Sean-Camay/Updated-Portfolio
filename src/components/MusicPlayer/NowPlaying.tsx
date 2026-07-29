@@ -9,6 +9,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import PauseIcon from '@mui/icons-material/Pause'
 import SkipNextIcon from '@mui/icons-material/SkipNext'
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
+import CloseIcon from '@mui/icons-material/Close'
 import { Track } from '../../types/musicType'
 import { formatTime } from '../../utils/timeFormatter'
 
@@ -18,6 +19,7 @@ interface NowPlayingProps {
   currentTime: number
   duration: number
   onTogglePlay: () => void
+  onClose: () => void
   onSkipNext: () => void
   onSkipPrevious: () => void
   onSeek: (event: React.MouseEvent<HTMLDivElement>) => void
@@ -32,13 +34,22 @@ export const NowPlaying = ({
   onSkipNext,
   onSkipPrevious,
   onSeek,
+  onClose,
 }: NowPlayingProps) => {
   return (
     <Card style={{ marginBottom: '20px', backgroundColor: '#f5f5f5' }}>
       <CardContent>
-        <h3>Now Playing</h3>
-
-        <Box style={{ marginBottom: '20px' }}>
+        <Box
+          style={{ marginBottom: '2px', cursor: 'pointer' }}
+          onClick={onSeek}
+        >
+          <LinearProgress
+            variant='determinate'
+            value={duration ? (currentTime / duration) * 100 : 0}
+            style={{ height: '4px', borderRadius: '4px' }}
+          />
+        </Box>
+        <Box style={{ marginBottom: '2px' }}>
           <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
             {track.title}
           </div>
@@ -48,42 +59,38 @@ export const NowPlaying = ({
         </Box>
 
         <Box
-          style={{ marginBottom: '10px', cursor: 'pointer' }}
-          onClick={onSeek}
-        >
-          <LinearProgress
-            variant='determinate'
-            value={duration ? (currentTime / duration) * 100 : 0}
-            style={{ height: '8px', borderRadius: '4px' }}
-          />
-        </Box>
-
-        <Box
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             fontSize: '12px',
             color: '#999',
-            marginBottom: '15px',
+            marginBottom: '2px',
           }}
         >
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </Box>
 
-        <Box style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-          <IconButton onClick={onSkipPrevious} size='large'>
+        <Box
+          style={{
+            display: 'flex',
+            justifyContent: 'end',
+            gap: '10px',
+            alignItems: 'center',
+          }}
+        >
+          <IconButton onClick={onSkipPrevious} size='small'>
             <SkipPreviousIcon />
           </IconButton>
 
           <IconButton
             onClick={onTogglePlay}
-            size='large'
+            size='small'
             style={{
-              backgroundColor: '#1976d2',
-              color: 'white',
-              width: '56px',
-              height: '56px',
+              // backgroundColor: '#1976d2',
+              color: 'black',
+              width: '25px',
+              height: '25px',
             }}
           >
             {isPlaying ?
@@ -91,8 +98,11 @@ export const NowPlaying = ({
             : <PlayArrowIcon />}
           </IconButton>
 
-          <IconButton onClick={onSkipNext} size='large'>
+          <IconButton onClick={onSkipNext} size='small'>
             <SkipNextIcon />
+          </IconButton>
+          <IconButton onClick={onClose} size='small'>
+            <CloseIcon />
           </IconButton>
         </Box>
       </CardContent>

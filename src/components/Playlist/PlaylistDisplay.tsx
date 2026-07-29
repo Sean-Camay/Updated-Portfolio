@@ -20,12 +20,14 @@ interface PlaylistDisplayProps {
   tracks: Track[]
   authToken?: string | null
   onTrackDelete?: (trackId: string) => void
+  onTrackClick?: (trackId: string) => void
 }
 
 export const PlaylistDisplay = ({
   tracks,
   authToken,
   onTrackDelete,
+  onTrackClick,
 }: PlaylistDisplayProps) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [trackToDelete, setTrackToDelete] = useState<string | null>(null)
@@ -79,7 +81,10 @@ export const PlaylistDisplay = ({
                     alignItems: 'center',
                   }}
                 >
-                  <Box>
+                  <Box
+                    onClick={() => onTrackClick?.(track.id)}
+                    style={{ cursor: onTrackClick ? 'pointer' : 'default' }}
+                  >
                     <div style={{ fontWeight: 'bold' }}>{track.title}</div>
                     <div style={{ fontSize: '12px', color: '#666' }}>
                       {track.artist} • {track.album}

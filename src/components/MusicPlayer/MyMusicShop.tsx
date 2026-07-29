@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTracklist } from '../../hooks/useTracklist'
 import { useAdminPanel } from '../../hooks/useAdminPanel'
 import {
@@ -11,18 +12,24 @@ import {
   MenuItem,
 } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { PlaylistPlayer } from './PlaylistPlayer'
 import { AdminLoginForm } from '../Forms/AdminLoginForm'
 import { TrackUploadForm } from '../Forms/TrackUploadForm'
 import { PlaylistDisplay } from '../Playlist/PlaylistDisplay'
 import { SettingsIcon } from 'lucide-react'
-import React from 'react'
 
-export const MyMusicShop = () => {
-  const { tracks, loading, error, fetchTracks } = useTracklist()
+interface MyMusicShopProps {
+  loading: boolean
+  error: string | null
+  onTrackClick?: (trackId: string) => void
+}
+
+export const MyMusicShop = ({
+  loading,
+  error,
+  onTrackClick,
+}: MyMusicShopProps) => {
+  const { tracks, fetchTracks } = useTracklist()
   const {
-    // showLogin,
-    // setShowLogin,
     loginError,
     isAuthenticated,
     logout,
@@ -112,21 +119,11 @@ export const MyMusicShop = () => {
         My Music Shop
       </div>
 
-      {tracks.length > 0 ?
-        <Box className='mb-7'>
-          <PlaylistPlayer tracks={tracks} />
-        </Box>
-      : <Card className='mb-7'>
-          <CardContent>
-            <p className='text-black text-center'>No tracks available</p>
-          </CardContent>
-        </Card>
-      }
-
       <PlaylistDisplay
         tracks={tracks}
         authToken={token}
         onTrackDelete={handleTrackDelete}
+        onTrackClick={onTrackClick}
       />
 
       {isAuthenticated && (
