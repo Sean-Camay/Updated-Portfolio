@@ -37,7 +37,7 @@ export const NowPlaying = ({
   onClose,
 }: NowPlayingProps) => {
   return (
-    <Card style={{ marginBottom: '20px', backgroundColor: '#f5f5f5' }}>
+    <Card style={{ marginBottom: '20px', backgroundColor: '#080404' }}>
       <CardContent>
         <Box
           style={{ marginBottom: '2px', cursor: 'pointer' }}
@@ -46,14 +46,16 @@ export const NowPlaying = ({
           <LinearProgress
             variant='determinate'
             value={duration ? (currentTime / duration) * 100 : 0}
-            style={{ height: '4px', borderRadius: '4px' }}
+            style={{ height: '4px', borderRadius: '4px', color: '#ffffff' }}
           />
         </Box>
         <Box style={{ marginBottom: '2px' }}>
-          <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
+          <div
+            style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}
+          >
             {track.title}
           </div>
-          <div style={{ fontSize: '14px', color: '#666' }}>
+          <div style={{ fontSize: '14px', color: '#b4b0b0' }}>
             {track.artist} • {track.album}
           </div>
         </Box>
@@ -79,7 +81,11 @@ export const NowPlaying = ({
             alignItems: 'center',
           }}
         >
-          <IconButton onClick={onSkipPrevious} size='small'>
+          <IconButton
+            onClick={onSkipPrevious}
+            size='small'
+            style={{ color: 'white' }}
+          >
             <SkipPreviousIcon />
           </IconButton>
 
@@ -88,7 +94,7 @@ export const NowPlaying = ({
             size='small'
             style={{
               // backgroundColor: '#1976d2',
-              color: 'black',
+              color: 'white',
               width: '25px',
               height: '25px',
             }}
@@ -98,10 +104,14 @@ export const NowPlaying = ({
             : <PlayArrowIcon />}
           </IconButton>
 
-          <IconButton onClick={onSkipNext} size='small'>
+          <IconButton
+            onClick={onSkipNext}
+            size='small'
+            style={{ color: 'white' }}
+          >
             <SkipNextIcon />
           </IconButton>
-          <IconButton onClick={onClose} size='small'>
+          <IconButton onClick={onClose} size='small' style={{ color: 'white' }}>
             <CloseIcon />
           </IconButton>
         </Box>

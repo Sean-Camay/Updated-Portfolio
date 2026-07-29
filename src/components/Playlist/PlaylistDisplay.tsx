@@ -32,6 +32,8 @@ export const PlaylistDisplay = ({
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [trackToDelete, setTrackToDelete] = useState<string | null>(null)
 
+  console.log('tracks:', tracks)
+
   const openDeleteDialog = (trackId: string) => {
     setTrackToDelete(trackId)
     setDeleteDialogOpen(true)
@@ -90,10 +92,7 @@ export const PlaylistDisplay = ({
                       {track.artist} • {track.album}
                     </div>
                   </Box>
-                  <div style={{ fontSize: '12px', color: '#999' }}>
-                    {Math.floor(track.duration / 60)}:
-                    {String(Math.floor(track.duration % 60)).padStart(2, '0')}
-                  </div>
+
                   <IconButton
                     size='small'
                     onClick={() => openDeleteDialog(track.id)}

@@ -72,7 +72,15 @@ export const MyMusicShop = ({
 
   return (
     <Box className='p-5 max-w-4xl mx-auto text-center'>
-      <Box>
+      <Box
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <div className='text-black text-2xl font-bold'>My Music Shop</div>
         <IconButton
           onClick={handleMenuOpen}
           size='small'
@@ -115,9 +123,6 @@ export const MyMusicShop = ({
           </MenuItem>
         </Menu>
       </Box>
-      <div className='text-black text-center text-2xl font-bold mb-4'>
-        My Music Shop
-      </div>
 
       <PlaylistDisplay
         tracks={tracks}
